@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Campaigns - Add_M</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; padding: 0; margin: 0; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fceff9, #e0f7fa);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        nav {
+            background-color: #fff;
+            padding: 15px 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #b19cd9;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #444;
+            font-weight: 500;
+        }
+        main {
+            flex: 1;
+            padding: 40px 20px;
+        }
+        .campaign-container {
+            text-align: center;
+        }
+        .campaign-container h2 {
+            color: #b19cd9;
+            margin-bottom: 20px;
+        }
+        .campaign-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .campaign-card {
+            background-color: #fff;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .campaign-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+        }
+        .campaign-card h3 {
+            color: #b19cd9;
+        }
+        .btn {
+            background-color: #b19cd9;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #a58fc9;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <div class="logo">Add_M</div>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/dashboard/">Dashboard</a></li>
+        <li><a href="/campaigns/">Campaigns</a></li>
+    </ul>
+</nav>
+<main>
+    <div class="campaign-container">
+        <h2>Your Campaign Options</h2>
+        <div class="campaign-grid">
+            <div class="campaign-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" alt="Create">
+                <h3>Create Campaign</h3>
+                <p>Design and launch a brand new marketing campaign in just a few clicks.</p>
+                <button class="btn">Create</button>
+            </div>
+            <div class="campaign-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/1827/1827925.png" alt="Manage">
+                <h3>Manage Campaigns</h3>
+                <p>Edit, pause, or delete your active campaigns anytime.</p>
+                <button class="btn">Manage</button>
+            </div>
+            <div class="campaign-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/3798/3798791.png" alt="Analytics">
+                <h3>View Analytics</h3>
+                <p>Track your performance: impressions, engagement, and conversions.</p>
+                <button class="btn">Analytics</button>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

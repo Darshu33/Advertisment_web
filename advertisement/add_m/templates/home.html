@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome | Add_M{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(135deg, #fceff9, #e0f7fa);
+        font-family: 'Poppins', sans-serif;
+        color: #444;
+        margin: 0;
+        padding: 0;
+    }
+
+    .home-container {
+        max-width: 800px;
+        margin: 60px auto;
+        padding: 40px;
+        background-color: rgba(255, 255, 255, 0.8); /* semi-transparent white */
+        -webkit-backdrop-filter: blur(10px); /* Safari */
+        backdrop-filter: blur(10px); /* Edge/Chrome */
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(255, 182, 193, 0.4);
+        text-align: center;
+        transition: all 0.4s ease;
+    }
+
+    .home-container:hover {
+        box-shadow: 0 12px 35px rgba(255, 182, 193, 0.6);
+    }
+
+    .home-title {
+        font-size: 3rem;
+        color: #ff6ec7;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+    }
+
+    .home-subtitle {
+        font-size: 1.3rem;
+        color: #6a6a6a;
+        margin-bottom: 30px;
+    }
+
+    .home-btns a {
+        display: inline-block;
+        margin: 10px;
+        padding: 12px 25px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-pink {
+        background-color: #ffc1cc;
+        color: #333;
+    }
+
+    .btn-pink:hover {
+        background-color: #ffadc2;
+        transform: scale(1.05);
+    }
+
+    .btn-mint {
+        background-color: #b5ead7;
+        color: #333;
+    }
+
+    .btn-mint:hover {
+        background-color: #a0e4cb;
+        transform: scale(1.05);
+    }
+
+    .btn-purple {
+        background-color: #cdb4db;
+        color: #fff;
+    }
+
+    .btn-purple:hover {
+        background-color: #bca0d0;
+        transform: scale(1.05);
+    }
+
+    @media (max-width: 600px) {
+        .home-title {
+            font-size: 2rem;
+        }
+
+        .home-subtitle {
+            font-size: 1rem;
+        }
+    }
+</style>
+
+<div class="home-container">
+    <h1 class="home-title">Welcome to My Advertising Castel </h1>
+    <p class="home-subtitle">The pastel-perfect platform for smart ads and vibrant connections ✨</p>
+
+    <div class="home-btns">
+        {% if user.is_authenticated %}
+            <a href="{% url 'dashboard' %}" class="btn-purple">Go to Dashboard</a>
+        {% else %}
+            <a href="{% url 'register' %}" class="btn-mint">Get Started</a>
+            <a href="{% url 'login' %}" class="btn-pink">Login</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

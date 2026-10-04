@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% block title %}Register | Add_M{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(135deg, #e0f7fa, #fceff9);
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .register-container {
+        max-width: 500px;
+        margin: 60px auto;
+        padding: 40px;
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 25px;
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+        box-shadow: 0 10px 25px rgba(173, 216, 230, 0.4);
+    }
+
+    .register-container h2 {
+        text-align: center;
+        color: #ff6ec7;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        display: block;
+        font-weight: 600;
+        color: #444;
+        margin-bottom: 8px;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 10px 15px;
+        border: 1px solid #ccc;
+        border-radius: 12px;
+        outline: none;
+        transition: border 0.3s ease;
+    }
+
+    .form-group input:focus {
+        border-color: #ffb6c1;
+    }
+
+    .password-hint {
+        font-size: 0.9rem;
+        color: #888;
+        margin-top: 5px;
+    }
+
+    .password-hint.valid {
+        color: #4caf50;
+    }
+
+    .password-hint.invalid {
+        color: #f44336;
+    }
+
+    .btn-register {
+        background-color: #cdb4db;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 20px;
+        font-weight: bold;
+        width: 100%;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+
+    .btn-register:hover {
+        background-color: #b09fc9;
+    }
+</style>
+
+<div class="register-container">
+    <h2>Create an Account</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.username.label_tag }}
+        {{ form.username }}
+
+        {{ form.email.label_tag }}
+        {{ form.email }}
+
+        <div class="form-group">
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+            <div id="password-hints">
+                <div id="length" class="password-hint">• At least 8 characters</div>
+                <div id="uppercase" class="password-hint">• At least one uppercase letter</div>
+                <div id="number" class="password-hint">• At least one number</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+        </div>
+
+        <button class="btn-register" type="submit">Register</button>
+    </form>
+</div>
+
+<script>
+    const passwordInput = document.getElementById('id_password1');
+    const lengthHint = document.getElementById('length');
+    const upperHint = document.getElementById('uppercase');
+    const numberHint = document.getElementById('number');
+
+    passwordInput.addEventListener('input', function () {
+        const val = passwordInput.value;
+
+        // Check length
+        if (val.length >= 8) {
+            lengthHint.classList.add('valid');
+            lengthHint.classList.remove('invalid');
+        } else {
+            lengthHint.classList.add('invalid');
+            lengthHint.classList.remove('valid');
+        }
+
+        // Check uppercase
+        if (/[A-Z]/.test(val)) {
+            upperHint.classList.add('valid');
+            upperHint.classList.remove('invalid');
+        } else {
+            upperHint.classList.add('invalid');
+            upperHint.classList.remove('valid');
+        }
+
+        // Check number
+        if (/\d/.test(val)) {
+            numberHint.classList.add('valid');
+            numberHint.classList.remove('invalid');
+        } else {
+            numberHint.classList.add('invalid');
+            numberHint.classList.remove('valid');
+        }
+    });
+</script>
+{% endblock %}

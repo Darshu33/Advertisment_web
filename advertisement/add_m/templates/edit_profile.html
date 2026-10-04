@@ -1,0 +1,89 @@
+<div class="edit-profile-container">
+    <h2>Edit Your Profile</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="id_bio">Bio:</label>
+            {{ form.bio }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_avatar">Upload New Avatar:</label>
+            {{ form.avatar }}
+        </div>
+
+        <div class="avatar-section">
+            <label>Current Avatar:</label><br>
+            {% if user.userprofile.avatar %}
+                <img src="{{ user.userprofile.avatar.url }}" alt="Avatar" class="avatar-preview">
+            {% else %}
+                <img src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png" alt="Default Avatar" class="avatar-preview">
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn">Save Changes</button>
+    </form>
+</div>
+
+<style>
+    .edit-profile-container {
+        background-color: #fff;
+        max-width: 600px;
+        margin: 30px auto;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .edit-profile-container h2 {
+        color: #b19cd9;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        display: block;
+        margin-bottom: 5px;
+        color: #555;
+    }
+
+    .form-group input, .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .avatar-preview {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-top: 10px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn {
+        display: block;
+        background-color: #b19cd9;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+        margin: 20px auto 0;
+    }
+
+    .btn:hover {
+        background-color: #a58fc9;
+    }
+</style>
